@@ -1,0 +1,52 @@
+==> Aqui um exemplo utilizando um arquivo de "html" e outro 
+de "php" em arquivos separados E PRINCIPALMENTE EM POST para 
+QUE NÂO APAREÇA OS DADOS NA "URL" e também NÂO APAREÇA 
+O FORMULÀRIO na mesma PÀGINA.
+
+==> OS CÒDIGOS ABAIXOS EM ARQUIVOS DISTINTOS:
+index_post.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviando dados para index_post1.php</title>
+</head>
+<body>
+    
+<form method="post" action="index_post1.php">
+	<p>Nome: <input type="text" name="nome"></p>
+	<p>Telefone: <input type="text" name="telefone"></p>
+	<p>Email: <input type="text" name="email"></p>
+	<p><input type="submit" value="Enviar"></p>
+</form>
+</body>
+</html>
+
+================================================================================================
+
+==> Arquivo de php
+
+<?php
+// === Tentando com $_POST ===========
+// Podemos até criar variáveis dinamicamente com o laço foreach:
+
+    // AQUI A DIFERENÇA QUE OS DADOS SÂO OCULTADOS DA BARRA "URL".
+
+/* Verifica se $_GET['nome'] existe e não está vazio */
+if (   isset( $_POST['nome'] ) && 
+	 ! empty( $_POST['nome'] ) 
+) {
+	// Cria variáveis dinamicamente
+	foreach ( $_POST as $chave => $valor ) {
+		$$chave = $valor;
+	}
+	
+	// Mostra os dados na tela
+	echo $nome . '<br>';
+	echo $telefone . '<br>';
+	echo $email . '<br>';
+}
+?>
+

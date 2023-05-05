@@ -1,0 +1,25 @@
+<?php
+// E assim como em $_POST, também podemos configurar os dados recebidos por HTTP GET em variáveis, veja:
+
+/* Verifica se $_GET['nome'] existe e não está vazio */
+if (   isset( $_GET['nome'] ) && 
+	 ! empty( $_GET['nome'] ) 
+) {
+	// Cria as variáveis
+	$nome     = $_GET['nome'];
+	$telefone = $_GET['telefone'];
+	$email    = $_GET['email'];
+	
+	// Mostra os dados na tela
+	echo $nome . '<br>';
+	echo $telefone . '<br>';
+	echo $email . '<br>';
+}
+?>
+
+<form method="get" action="">
+	<p>Nome: <input type="text" name="nome"></p>
+	<p>Telefone: <input type="text" name="telefone"></p>
+	<p>Email: <input type="text" name="email"></p>
+	<p><input type="submit" value="Enviar"></p>
+</form>
